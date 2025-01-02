@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funky Portfolio</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            color: #fff;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        h1 {
+            font-size: 3rem;
+            animation: rainbow 5s infinite;
+        }
+
+        @keyframes rainbow {
+            0% { color: red; }
+            25% { color: yellow; }
+            50% { color: lime; }
+            75% { color: cyan; }
+            100% { color: violet; }
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .card {
+            width: 300px;
+            height: 300px;
+            margin: 15px;
+            border: 5px dotted #fff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            transform: rotate(-10deg);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .card:hover {
+            transform: rotate(10deg) scale(1.1);
+            background: linear-gradient(to right, #ff7eb3, #ff758c);
+        }
+
+        .nonsense {
+            font-size: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .emoji {
+            font-size: 2rem;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Funky Portfolio! 😎✨</h1>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <p class="nonsense">Pineapple Rainbows 🍍🌈 (Lowkey iconic 🤌)</p>
+        </div>
+        <div class="card">
+            <p class="nonsense">Unicorn Surfboards 🦄🏄‍♂️ (Straight vibin’ 🫶)</p>
+        </div>
+        <div class="card">
+            <p class="nonsense">Fried Marshmallows 🍡🔥 (Literal fire 🔥)</p>
+        </div>
+        <div class="card">
+            <p class="nonsense">Dancing Bananas 🍌💃 (Big mood 💯)</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>✨ Created by a Certified Wizard 🧙‍♂️ (No cap 🧢)</p>
+        <p><span class="emoji">🌀</span></p>
+    </footer>
+</body>
+</html>
