@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media House</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif; /* Replace with Brande Sans Serif */
+            font-size: 3rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        header button {
+            background: #fff;
+            color: #6a11cb;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: 0.3s ease-in-out;
+        }
+
+        header button:hover {
+            background: #6a11cb;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        /* Input Section */
+        div {
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        label {
+            font-size: 1rem;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        input {
+            padding: 0.6rem;
+            font-size: 0.9rem;
+            width: 250px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease-in-out;
+        }
+
+        input:focus {
+            border-color: #6a11cb;
+            outline: none;
+            transform: scale(1.05);
+        }
+
+        button {
+            background: #2575fc;
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1rem;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-left: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: #6a11cb;
+            transform: scale(1.1);
+        }
+
+        /* Resolution Buttons */
+        .resolution-buttons {
+            margin-top: 1rem;
+        }
+
+        .resolution-buttons button {
+            background: #444;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-radius: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .resolution-buttons button:hover {
+            background: #6a11cb;
+            color: white;
+        }
+
+        /* Iframe Styling */
+        iframe {
+            display: block;
+            margin: 2rem auto;
+            border: 10px solid #00bfff; /* Neon Blue Border */
+            border-radius: 20px;
+            background: #001f3f; /* Neon Blue Background */
+            width: 80%;
+            height: 450px;
+            box-shadow: 0px 10px 20px rgba(0, 255, 255, 0.5);
+            transition: transform 0.3s ease, height 0.3s ease;
+        }
+
+        iframe:hover {
+            transform: scale(1.01);
+        }
+
+        /* Light Mode Styling */
+        .light-mode {
+            background: #fffbea; /* Light Yellow Ochre */
+            color: #333;
+        }
+
+        .light-mode header {
+            background: #ffd700; /* Gold Header */
+            color: #333;
+        }
+
+        .light-mode header button {
+            background: #6a11cb;
+            color: #fff;
+        }
+
+        .light-mode iframe {
+            border-color: #ffd700; /* Gold Border */
+            background: #fffbdf;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="Title">Media House</h1>
+        <button id="toggle_mode">Switch to Light Mode</button>
+    </header>
+    <div>
+        <label for="movie_name">Enter Movie Code:</label>
+        <input id="movie_name" type="text">
+        <button id="update_btn">Load Movie</button>
+    </div>
+    <div class="resolution-buttons">
+        <button id="hd_btn">HD</button>
+        <button id="4k_btn">4K</button>
+    </div>
+    <iframe id="movie_iframe" src="https://vidsrc.me/embed/movie?imdb=tt15398776" frameborder="1" referrerpolicy="origin" allowfullscreen></iframe>
+
+    <script>
+        const movieInput = document.getElementById('movie_name');
+        const updateButton = document.getElementById('update_btn');
+        const iframe = document.getElementById('movie_iframe');
+        const hdButton = document.getElementById('hd_btn');
+        const k4Button = document.getElementById('4k_btn');
+        const body = document.body;
+        const toggleModeButton = document.getElementById('toggle_mode');
+
+        // Update Movie Code
+        updateButton.addEventListener('click', () => {
+            const movieCode = movieInput.value.trim();
+            if (movieCode) {
+                iframe.src = `https://vidsrc.me/embed/movie?imdb=${movieCode}`;
+            } else {
+                alert('Please enter a valid movie code.');
+            }
+        });
+
+        // Resolution Change
+        hdButton.addEventListener('click', () => {
+            iframe.style.height = '450px'; // HD height
+        });
+
+        k4Button.addEventListener('click', () => {
+            iframe.style.height = '750px'; // 4K height
+        });
+
+        // Dark Mode and Light Mode Toggle
+        toggleModeButton.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                toggleModeButton.textContent = 'Switch to Dark Mode';
+            } else {
+                toggleModeButton.textContent = 'Switch to Light Mode';
+            }
+        });
+    </script>
+</body>
+</html>
